@@ -1,0 +1,27 @@
+{
+  "name": "crud_task",
+  "version": "1.0.0",
+  "description": "crud_task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhiloIbrahim/crud_task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhiloIbrahim/crud_task/issues"
+  },
+  "homepage": "https://github.com/PhiloIbrahim/crud_task#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
