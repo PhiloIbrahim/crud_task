@@ -12,7 +12,7 @@ const taskSchema = new mongoose.Schema({
     completed: {
         type: Boolean,
         default: false,
-        required: true
+        // required: true
     }
 });
 // create an instance of schema

@@ -107,4 +107,58 @@ app.delete("/tasklists/:id", (req, res) => {
       res.status(500);
     });
 });
+/* 
+  CRUD operations for tasks, a task should belong to a taskList
+*/
+// endpoint for getting all tasks for a taskList
+app.get("/tasklists/:id/tasks", (req, res) => {
+  task
+    .find({ _taskListId: req.params.id })
+    .then((tasks) => res.status(200).send(tasks))
+    .catch((error) => {
+      console.log(error);
+      res.status(500);
+    });
+});
+// create a task inside a taskList
+app.post("/tasklists/:id/tasks", (req, res) => {
+  let taskObj = { title: req.body.title, _taskListId: req.params.id };
+  task(taskObj)
+    .save()
+    .then((task) => res.status(201).send(task))
+    .catch((error) => {
+      console.log(error);
+      res.status(500);
+    });
+});
+// endpoint for getting a tasks by id for a taskList
+app.get("/tasklists/:id/tasks/:taskId", (req, res) => {
+  task
+    .findOne({ _taskListId: req.params.id, _id: req.params.taskId })
+    .then((task) => res.status(200).send(task))
+    .catch((error) => {
+      console.log(error);
+      res.status(500);
+    });
+});
+// endpoint for updating a task by id
+app.patch("/tasklists/:id/tasks/:taskId", (req, res) => {
+  task
+    .findOneAndUpdate({ _taskListId: req.params.id, _id: req.params.taskId }, { $set: req.body })
+    .then((task) => res.status(200).send(task))
+    .catch((error) => {
+      console.log(error);
+      res.status(500);
+    });
+});
+// endpoint for deleting a task by id
+app.delete("/tasklists/:id/tasks/:taskId", (req, res) => {
+  task
+    .findOneAndDelete({ _taskListId: req.params.id, _id: req.params.taskId })
+    .then((task) => res.status(200).send(task))
+    .catch((error) => {
+      console.log(error);
+      res.status(500);
+    });
+});
 app.listen(3000, () => console.log("server is running at port: 3000"));
